@@ -1,0 +1,166 @@
+==================================
+   Module "ROL_ROR" Version 1.0
+==================================
+ for Perl version 5.000 or higher
+
+
+Contents of this file:
+----------------------
+
+    -   Legal stuff
+    -   Requirements
+    -   What does it do
+    -   Preliminary steps for use with Perl prior to version 5.002
+    -   How to install it
+    -   Version history
+    -   Credits
+    -   Final note
+
+
+Legal stuff:
+------------
+
+Copyright (c) 1997 by Steffen Beyer. All rights reserved.
+This package is free software; you can redistribute it
+and/or modify it under the same terms as Perl itself.
+
+
+Requirements:
+-------------
+
+Perl version 5.000 or higher, a C compiler capable of the ANSI C standard (!)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+What does it do:
+----------------
+
+This module implements rotate left, rotate right, arithmetic shift left
+and logical shift right operations with carry flag for all C integer types.
+
+The results depend on the number of bits that the integer types unsigned
+char, unsigned short, unsigned int and unsigned long have on your machine.
+
+The module automatically determines the number of bits of each integer type
+and adjusts its internal constants accordingly.
+
+
+Preliminary steps for use with Perl prior to version 5.002:
+-----------------------------------------------------------
+
+Edit the file "Makefile.PL" in this distribution and change the line
+
+    'VERSION_FROM'	=> 'ROL_ROR.pm',
+
+to
+
+    'VERSION'		=> '1.0',
+
+Then edit the file "ROL_ROR.pm" and change the line
+
+    bootstrap ROL_ROR $VERSION;
+
+to
+
+    bootstrap ROL_ROR;
+
+Finally, edit the file "ROL_ROR.xs" and delete the line
+
+    PROTOTYPES: DISABLE
+
+
+How to install it:
+------------------
+
+Please unpack and build this package OUTSIDE the Perl source and distribution
+tree!!
+
+ 1) Change directory to the directory that has been created by unpacking this
+    package ("ROL_ROR-1.0/").
+
+ 2) Type "perl Makefile.PL" (or whatever the name and path of your Perl 5
+    binary is).
+
+    This will create a "Makefile" with the appropriate parameters for your
+    system (for instance, where the install directories are, and so on).
+
+ 3) Type "make".
+
+    This will create a dynamically linkable library file that will be linked
+    to Perl later, at runtime, provided your system supports dynamic linking.
+
+    Please refer to the MakeMaker documentation for instructions on how
+    to build a new Perl with statically linked libraries (invoke "perldoc
+    ExtUtils::MakeMaker" for this), if your system does NOT support dynamic
+    linking!
+
+    Should you encounter any compiler warnings or errors (like the redefini-
+    tion of certain types already defined by your system), please contact
+    me by mail at <sb@sdm.de>, sending me your compiler output (both STDOUT
+    and STDERR). Thank you!
+
+    ======================================================================
+    Be aware that you need a C compiler which supports ANSI C in order to
+    successfully compile this package!
+    ======================================================================
+
+    Also note that problems may arise with the c89 compiler of HP, although
+    it allegedly supports ANSI C!
+
+    I recommend the GNU gcc compiler, which is available for free on the
+    Internet.
+
+    (HP users are strongly recommended to install the GNU assembler GAS
+    first before installing GNU gcc)
+
+    Should you get the error messages
+
+    ROL_ROR.c: 15: Unable to find include file 'EXTERN.h'.
+    ROL_ROR.c: 16: Unable to find include file 'perl.h'.
+    ROL_ROR.c: 17: Unable to find include file 'XSUB.h'.
+
+    then edit the file Makefile.PL and change the line
+
+    'INC'	=> '',     # e.g., '-I/opt/pkg/perl5.003/dist'
+
+    in such a way that it points to your Perl 5 distribution tree, e.g.,
+
+    'INC'	=> '-I/usr/ctr/dlt/private/perl/perl5.003',
+
+    or the like, and start over with the generation of the Makefile at 2).
+
+ 4) At last, type "make install".
+
+ 5) Share and enjoy!
+
+
+Version history:
+----------------
+
+Version 1.0 is the initial release.
+
+
+Credits:
+--------
+
+None yet except - as always - to Andreas Koenig <andreas.koenig@mind.de>
+for his relentless support and efforts as upload manager of the CPAN!
+
+
+Final note:
+-----------
+
+If you need any assistance or have any comments, problems, suggestions,
+findings, complaints, questions, insights, compliments or donations to give ;-)
+then please don't hesitate to send me a mail:
+
+sb@sdm.de (Steffen Beyer)
+
+Yours sincerely,
+--
+          _____        _____      .__
+        _/ ____\____ _/ ____\____ |__|______
+        \   __\\__  \\   __\/    \|  \_  __ \       Steffen Beyer
+         |  |   / __ \|  | |   |  \  ||  | \/         sb@sdm.de
+         |__|  (____  /__| |___|  /__||__|           sb@en.muc.de
+                    \/          \/           http://www.engelschall.com/u/sb/
