@@ -1,5 +1,5 @@
 ==================================
-   Module "ROL_ROR" Version 1.0
+   Module "ROL_ROR" Version 1.1
 ==================================
  for Perl version 5.000 or higher
 
@@ -54,7 +54,7 @@ Edit the file "Makefile.PL" in this distribution and change the line
 
 to
 
-    'VERSION'		=> '1.0',
+    'VERSION'		=> '1.1',
 
 Then edit the file "ROL_ROR.pm" and change the line
 
@@ -76,7 +76,7 @@ Please unpack and build this package OUTSIDE the Perl source and distribution
 tree!!
 
  1) Change directory to the directory that has been created by unpacking this
-    package ("ROL_ROR-1.0/").
+    package ("ROL_ROR-1.1/").
 
  2) Type "perl Makefile.PL" (or whatever the name and path of your Perl 5
     binary is).
@@ -137,7 +137,11 @@ tree!!
 Version history:
 ----------------
 
-Version 1.0 is the initial release.
+Version 1.0 was the initial release.
+
+Version 1.1 fixes a possible bug in the XS file where the number of bits
+of an unsigned char was assumed to be 8 bits (without even checking) in
+the previous version.
 
 
 Credits:

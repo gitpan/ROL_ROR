@@ -21,7 +21,7 @@ ROL_int ROR_int ASL_int LSR_int ROL_long ROR_long ASL_long LSR_long );
 
 %EXPORT_TAGS = (all => [@EXPORT_OK]);
 
-$VERSION = '1.0';
+$VERSION = '1.1';
 
 bootstrap ROL_ROR $VERSION;
 
@@ -221,7 +221,7 @@ perl(1), perlsub(1), perlmod(1), perlxs(1), perlxstut(1), perlguts(1).
 
 =head1 VERSION
 
-This man page documents ROL_ROR version 1.0.
+This man page documents ROL_ROR version 1.1.
 
 =head1 AUTHOR
 

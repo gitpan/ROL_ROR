@@ -13,9 +13,9 @@
 #include "lib_defs.h"
 
 
-static N_char BIT_byte = 8;
+static N_char BIT_byte;
 static N_char LSB_byte = 1;
-static N_char MSB_byte = 0x80;
+static N_char MSB_byte;
 
 static N_short BIT_short;
 static N_short LSB_short = 1;
@@ -28,6 +28,18 @@ static N_int   MSB_int;
 static N_long  BIT_long;
 static N_long  LSB_long = 1;
 static N_long  MSB_long;
+
+
+void config_byte(void)
+{
+    N_char sample = LSB_byte;
+
+    BIT_byte = 0;
+
+    while (sample <<= 1) BIT_byte++;   /* determine # of bits */
+
+    MSB_byte = (LSB_byte << BIT_byte++);
+}
 
 
 void config_short(void)
@@ -74,6 +86,7 @@ PROTOTYPES: DISABLE
 
 BOOT:
 {
+    config_byte();
     config_short();
     config_int();
     config_long();
@@ -85,7 +98,7 @@ Version()
 PPCODE:
 {
     EXTEND(sp,1);
-    PUSHs(sv_2mortal(newSVpv("1.0",0)));
+    PUSHs(sv_2mortal(newSVpv("1.1",0)));
 }
 
 
